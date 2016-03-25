@@ -1,5 +1,9 @@
 <?php
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 echo "<html style='font-size: 30px;'>";
 
 $date = "";

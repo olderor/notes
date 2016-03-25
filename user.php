@@ -1,5 +1,9 @@
 <?php
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 require 'mysql.php';
 
 class User {
@@ -12,7 +16,7 @@ class User {
         
         $user = Database::getUser($mail);
         if (self::checkIfUserExist($user))
-            Error::newError(10, "Invalid input. User with mail '$mail' is already registered");
+            Error::newError(10, "Invalid input. User with the mail '$mail' is already registered");
         
         $hashpass = password_hash($password, PASSWORD_DEFAULT);
         
@@ -23,11 +27,15 @@ class User {
         $this->hashpass = $hashpass;
     }
     
-    public function getUser($mail, $pass) {
+    public function getUser($mail, $password) {
         
         $user = Database::getUser($mail);
-        if (self::checkIfUserExist($user))
-            Error::newError(11, "Invalid input. User with mail '$mail' was not found");
+        
+        if (!self::checkIfUserExist($user))
+            Error::newError(11, "Invalid mail. User with the mail '$mail' was not found");
+        
+        if (!password_verify($password, $user['hashpass']))
+            Error::newError(12, "Invalid password");
         
         $this->id = $user['id'];
         $this->mail = $user['mail'];
