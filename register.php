@@ -21,7 +21,7 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
+    <link href="bootstrap/signin.css" rel="stylesheet">
 
 
 </head>
@@ -40,7 +40,7 @@
         echo "<h2 class='error'>" . $request['message'] . "</h2>";
     ?>
 
-    <form class="form-signin" method="get" action="register_user.php">
+    <form class="form-signin" method="get" action="actions/register_user.php">
         <h2 class="form-signin-heading" style="text-align: center;">Registration</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" id="inputEmail" name="mail" class="form-control" placeholder="Email address"

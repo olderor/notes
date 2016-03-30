@@ -16,7 +16,7 @@ class User {
         
         $user = Database::getUser($mail);
         if (self::checkIfUserExist($user))
-            Error::newError(10, "User with the mail '$mail' is already registered. Please, sign in", 'signin.php', array('mail' => $user['mail']));
+            ErrorHandler::newError(10, "User with the mail '$mail' is already registered. Please, sign in", 'signin.php', array('mail' => $user['mail']));
         
         $hashpass = password_hash($password, PASSWORD_DEFAULT);
         
@@ -32,10 +32,10 @@ class User {
         $user = Database::getUser($mail);
         
         if (!self::checkIfUserExist($user))
-            Error::newError(11, "Invalid mail. User with the mail '$mail' was not found", 'signin.php');
+            ErrorHandler::newError(11, "Invalid mail. User with the mail '$mail' was not found", 'signin.php');
         
         if (!password_verify($password, $user['hashpass']))
-            Error::newError(12, "Invalid password", 'signin.php', array('mail' => $user['mail']));
+            ErrorHandler::newError(12, "Invalid password", 'signin.php', array('mail' => $user['mail']));
         
         $this->id = $user['id'];
         $this->mail = $user['mail'];

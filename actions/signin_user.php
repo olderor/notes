@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-require 'user.php';
+require '../models/user.php';
 
 $request = null;
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
@@ -22,6 +22,6 @@ $user->getUser($mail, $password);
 
 $_SESSION['user'] = serialize($user);
 
-header("Location: test.php");
+header("Location: ../browse_notes.php");
 exit();
 ?>

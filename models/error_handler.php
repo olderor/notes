@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-class Error {
+class ErrorHandler {
     
     public static $isAPI = false;
     
@@ -30,7 +30,7 @@ class Error {
     }
 
     private static function redirect($url, $message, $params) {
-        $location = "Location: $url?message=$message";
+        $location = "Location: ../$url?message=$message";
         foreach ($params as $key => $value)
             $location = $location . "&$key=$value";
         error_log(print_r($location, TRUE));

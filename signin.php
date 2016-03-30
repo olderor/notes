@@ -21,7 +21,7 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
+    <link href="bootstrap/signin.css" rel="stylesheet">
 
 
 </head>
@@ -40,17 +40,18 @@
             echo "<h2 class='error'>" . $request['message'] . "</h2>";
     ?>
 
-    <form class="form-signin" method="get" action="signin_user.php">
+    <form class="form-signin" method="get" action="actions/signin_user.php">
         <h2 class="form-signin-heading" style="text-align: center;">Sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" name="mail" class="form-control" placeholder="Email address"
-               <?php
-               if (isset($request, $request['mail']))
-                   echo "value='" . $request['mail'] . "'";
-               else
-                    echo "autofocus";
-               ?>
-               required>
+            <input type="email" id="inputEmail" name="mail" class="form-control" placeholder="Email address"
+            <?php
+            if (isset($request, $request['mail']))
+                echo "value='" . $request['mail'] . "' required>";
+            else
+                echo "autofocus required>";
+            ?>
+
+
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
         <button class="btn btn-lg btn-primary" style="width: calc(50% - 5px);" type="submit">Sign in</button>

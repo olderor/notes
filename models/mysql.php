@@ -5,6 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 require 'error_handler.php';
+require 'note.php';
 
 class Database {
     
@@ -17,16 +18,16 @@ class Database {
     
     public static function connectToDb() {
         if (!(self::$link = mysqli_connect('localhost', 'root', "")))
-            Error::newError(1, 'Connection failed: ' . mysqli_connect_error());
+            ErrorHandler::newError(1, 'Connection failed: ' . mysqli_connect_error());
 
         if (mysqli_select_db(self::$link, self::$db_name) == 0)
-            Error::newError(2, 'Failed to select database');
+            ErrorHandler::newError(2, 'Failed to select database');
     }
 
     private static function sendQuery($query) {
         self::connectToDb();
         if (($result = mysqli_query(self::$link, $query)) == false)
-            Error::newError(3, 'Request failed: ' . mysqli_error(self::$link));
+            ErrorHandler::newError(3, 'Request failed: ' . mysqli_error(self::$link));
         
         self::$last_id = mysqli_insert_id(self::$link);
         
@@ -37,7 +38,7 @@ class Database {
     private static function sendQueryWithResult($query) {
         self::connectToDb();
         if (($result = mysqli_query(self::$link, $query)) == false)
-            Error::newError(3, 'Request failed: ' . mysqli_error(self::$link));
+            ErrorHandler::newError(3, 'Request failed: ' . mysqli_error(self::$link));
         
         $array = array();
         while ($row = mysqli_fetch_array($result)) {
@@ -60,14 +61,21 @@ class Database {
     }
 
     public static function getUserNotes($userid) {
-        $query = "SELECT * FROM `" . self::$notes_table . "` WHERE `user_id`='$userid'";
-        return self::sendQueryWithResult($query);
+        $query = "SELECT * FROM `" . self::$notes_table . "` WHERE `user_id`=$userid";
+        $response = self::sendQueryWithResult($query);
+        $result = array();
+        foreach ($response as $row) {
+            $note = new Note();
+            $note->parseNote($row);
+            array_push($result, $note);
+        }
+        return $result;
     }
 
     public static function addNewNote($note) {
         $query = "INSERT INTO `" . self::$notes_table . "`(
-        `id`, `user_id`,    `importance`,       `text`,       `datetime`) VALUES (
-        NULL, $note->userid, $note->importance,  $note->text, $note->datetime";
+        `id`, `user_id`,    `title`,       `importance`,      `text`,      `datetime`) VALUES (
+        NULL, $note->userid, $note->title, $note->importance, $note->text, $note->datetime";
         return self::sendQuery($query);
     }
 
