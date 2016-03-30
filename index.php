@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-header("Location: signin.html");
+header("Location: signin.php");
 
 /*
 $user = new User;

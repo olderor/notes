@@ -40,8 +40,8 @@ class Database {
             Error::newError(3, 'Request failed: ' . mysqli_error(self::$link));
         
         $array = array();
-        if ($row = mysqli_fetch_array($result)) {
-            $array = $row;
+        while ($row = mysqli_fetch_array($result)) {
+            array_push($array, $row);
         }
         
         mysqli_free_result($result);
@@ -56,7 +56,29 @@ class Database {
     
     public static function getUser($mail) {        
         $query = "SELECT * FROM `" . self::$users_table . "` WHERE `mail`='$mail'";
+        return self::sendQueryWithResult($query)[0];
+    }
+
+    public static function getUserNotes($userid) {
+        $query = "SELECT * FROM `" . self::$notes_table . "` WHERE `user_id`='$userid'";
         return self::sendQueryWithResult($query);
+    }
+
+    public static function addNewNote($note) {
+        $query = "INSERT INTO `" . self::$notes_table . "`(
+        `id`, `user_id`,    `importance`,       `text`,       `datetime`) VALUES (
+        NULL, $note->userid, $note->importance,  $note->text, $note->datetime";
+        return self::sendQuery($query);
+    }
+
+    public static function getNote($noteid) {
+        $query = "SELECT * FROM `" . self::$notes_table . "` WHERE `id`='$noteid'";
+        return self::sendQueryWithResult($query)[0];
+    }
+
+    public static function updateNote($note) {
+        $query = "UPDATE `" . self::$users_table . "` SET `importance`='$note->importance, `text`='$note->text WHERE `id`='$noteid'";
+        return self::sendQuery($query);
     }
 }
 
