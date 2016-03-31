@@ -55,7 +55,7 @@
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
         <button class="btn btn-lg btn-primary" style="width: calc(50% - 5px);" type="submit">Sign in</button>
-        <button class="btn btn-lg" type="button" style="margin-left: 5px; width: calc(50% - 5px);" onclick="location.href = 'register.php';";>Register</button>
+        <button class="btn btn-lg btn-default" type="button" style="margin-left: 5px; width: calc(50% - 5px);" onclick="location.href = 'register.php';";>Register</button>
     </form>
 
 </div> <!-- /container -->

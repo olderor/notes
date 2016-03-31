@@ -1,5 +1,13 @@
-body {
+html {
+  overflow-y: scroll;
+}
+
+h1 {
   padding-top: 40px;
+}
+
+
+body {
   padding-bottom: 40px;
   background-color: #eee;
 }
@@ -42,4 +50,24 @@ body {
 .error {
   text-align: center;
   color: red;
+}
+
+textarea {
+  resize: vertical;
+  height: auto;
+  overflow-y: hidden;
+}
+
+.title {
+  background: none;
+  border-color: white;
+  border-width: 2px;
+}
+.panel-body {
+  padding-bottom: 5px;
+}
+
+nav * {
+  color: black !important;
+  font-size: 20px;
 }

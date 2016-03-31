@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-require 'mysql.php';
+require_once 'mysql.php';
 
 class User {
     

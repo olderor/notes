@@ -4,8 +4,8 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-require 'error_handler.php';
-require 'note.php';
+require_once 'error_handler.php';
+require_once 'note.php';
 
 class Database {
     
@@ -85,7 +85,7 @@ class Database {
     }
 
     public static function updateNote($note) {
-        $query = "UPDATE `" . self::$users_table . "` SET `importance`='$note->importance, `text`='$note->text WHERE `id`='$noteid'";
+        $query = "UPDATE `" . self::$notes_table . "` SET `title`='$note->title', `importance`='$note->importance', `text`='$note->text', `datetime`='$note->datetime' WHERE `id`=$note->id";
         return self::sendQuery($query);
     }
 }

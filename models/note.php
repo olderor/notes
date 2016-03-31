@@ -1,5 +1,7 @@
 <?php
 
+require_once 'mysql.php';
+
 class Note
 {
     public $id;
@@ -10,6 +12,7 @@ class Note
     public $datetime;
 
     public function newNote($userid) {
+        $this->id = 0;
         $this->userid;
         $this->title = "untitled";
         $this->importance = 0;
@@ -18,6 +21,7 @@ class Note
     }
 
     public function parseNote($note) {
+        $this->id = $note['id'];
         $this->userid = $note['user_id'];
         $this->title = $note['title'];
         $this->importance = $note['importance'];
@@ -45,5 +49,6 @@ class Note
     }
 
 }
+
 
 ?>

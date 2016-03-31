@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-require '../models/user.php';
+require_once '../models/user.php';
 
 $request = null;
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
