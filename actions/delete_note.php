@@ -4,23 +4,26 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once '../models/user.php';
-    
+require_once '../models/note.php';
+
 $request = null;
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
     $request = $_GET;
 else if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $request = $_POST;
 
-$mail = $request["mail"];
-$password = $request["password"];
+if ($request == null)
+    exit();
 
-$user = new User;
-$user->newUser($mail, $password);
+$user = unserialize($_SESSION['user']);
 
-$_SESSION['user'] = serialize($user);
+if (!isset($request['noteid']))
+    exit();
 
-header("Location: ../signin.php");
+$note = new Note();
+$note->getNote($request['noteid']);
+$note->deleteNote();
+
 exit();
 
 ?>

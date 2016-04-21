@@ -8,10 +8,10 @@ require_once 'error_handler.php';
 require_once 'note.php';
 
 class Database {
-    
-    private static $db_name = 'notes';
-    private static $users_table = 'users';
-    private static $notes_table = 'notes';
+
+    public static $db_name = 'notes';
+    public static $users_table = 'users';
+    public static $notes_table = 'notes';
     private static $link;
     
     public static $last_id;
@@ -24,7 +24,7 @@ class Database {
             ErrorHandler::newError(2, 'Failed to select database');
     }
 
-    private static function sendQuery($query) {
+    public static function sendQuery($query) {
         self::connectToDb();
         if (($result = mysqli_query(self::$link, $query)) == false)
             ErrorHandler::newError(3, 'Request failed: ' . mysqli_error(self::$link));
@@ -32,10 +32,9 @@ class Database {
         self::$last_id = mysqli_insert_id(self::$link);
         
         mysqli_close(self::$link);
-        return;
     }
-    
-    private static function sendQueryWithResult($query) {
+
+    public static function sendQueryWithResult($query) {
         self::connectToDb();
         if (($result = mysqli_query(self::$link, $query)) == false)
             ErrorHandler::newError(3, 'Request failed: ' . mysqli_error(self::$link));
@@ -48,45 +47,6 @@ class Database {
         mysqli_free_result($result);
         mysqli_close(self::$link);
         return $array;
-    }
-    
-    public static function newUser($mail, $hashpass) {
-        $query = "INSERT INTO `" . self::$users_table . "`(`id`, `mail`, `hashpass`) VALUES (NULL, '$mail', '$hashpass')";
-        return self::sendQuery($query);
-    }
-    
-    public static function getUser($mail) {        
-        $query = "SELECT * FROM `" . self::$users_table . "` WHERE `mail`='$mail'";
-        return self::sendQueryWithResult($query)[0];
-    }
-
-    public static function getUserNotes($userid) {
-        $query = "SELECT * FROM `" . self::$notes_table . "` WHERE `user_id`=$userid";
-        $response = self::sendQueryWithResult($query);
-        $result = array();
-        foreach ($response as $row) {
-            $note = new Note();
-            $note->parseNote($row);
-            array_push($result, $note);
-        }
-        return $result;
-    }
-
-    public static function addNewNote($note) {
-        $query = "INSERT INTO `" . self::$notes_table . "`(
-        `id`, `user_id`,    `title`,       `importance`,      `text`,      `datetime`) VALUES (
-        NULL, $note->userid, $note->title, $note->importance, $note->text, $note->datetime";
-        return self::sendQuery($query);
-    }
-
-    public static function getNote($noteid) {
-        $query = "SELECT * FROM `" . self::$notes_table . "` WHERE `id`='$noteid'";
-        return self::sendQueryWithResult($query)[0];
-    }
-
-    public static function updateNote($note) {
-        $query = "UPDATE `" . self::$notes_table . "` SET `title`='$note->title', `importance`='$note->importance', `text`='$note->text', `datetime`='$note->datetime' WHERE `id`=$note->id";
-        return self::sendQuery($query);
     }
 }
 

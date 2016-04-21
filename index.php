@@ -56,8 +56,20 @@
     <h2 id="description">The best way to store your notes</h2>
     
     <div id="login">
-        <div class="btn btn-lg btn-default" style="width: calc(50% - 5px);" onclick="location.href = 'signin.php';">Sign in</div>
-        <div class="btn btn-lg btn-default" style="margin-left: 5px; width: calc(50% - 5px);" onclick="location.href = 'register.php';">Register</div>
+        <?php
+
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['user'])) {
+            echo '<div class="btn btn-lg btn-primary" style="width: calc(50% - 5px);" onclick="location.href = \'signin.php\';">Sign in</div>';
+            echo '<div class="btn btn-lg btn-default" style="margin-left: 5px; width: calc(50% - 5px);" onclick="location.href = \'register.php\';">Register</div>';
+        }
+        else {
+            echo '<div class="btn btn-lg btn-primary" onclick="location.href = \'browse_notes.php\';">Browse notes</div>';
+        }
+        ?>
     </div>
 </div>
 

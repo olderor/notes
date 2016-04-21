@@ -5,6 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 require_once '../models/note.php';
+require_once '../models/user.php';
 
 $request = null;
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
@@ -21,12 +22,21 @@ if (!isset($request['noteid']))
     exit();
 
 $note = new Note();
-$note->getNote($request['noteid']);
-$note->title = $request['title'];
-$note->text = $request['text'];
+$noteid = (int)$request['noteid'];
+if ($noteid < 0)
+    $note->createNewNote($user->id);
+else
+    $note->getNote($noteid);
+
+$note->title = isset($request['title']) ? $request['title'] : "";
+$note->text = isset($request['text']) ? str_replace("'", "\'", $request['text']) : "";
+$note->importance = $request['importance'];
+date_default_timezone_set("UTC");
 $note->datetime = date("Y-m-d H:i:s");
 $note->saveNote();
 
+setCookie('time', $note->datetime, time() + 3600, '/');
+setCookie('lastId', $note->id, time() + 3600, '/');
 exit();
 
 ?>

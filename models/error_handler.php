@@ -30,7 +30,7 @@ class ErrorHandler {
     }
 
     private static function redirect($url, $message, $params) {
-        $location = "Location: ../$url?message=$message";
+        $location = "Location: $url?message=$message"; //TODO: go to root
         foreach ($params as $key => $value)
             $location = $location . "&$key=$value";
         error_log(print_r($location, TRUE));

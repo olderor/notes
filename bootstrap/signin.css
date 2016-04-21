@@ -71,3 +71,20 @@ nav * {
   color: black !important;
   font-size: 20px;
 }
+
+.title {
+  width: calc(100% - 30px);
+  display: inline;
+}
+
+.close {
+  padding: 5px !important;
+  display: inline;
+}
+.option {
+  color: black;
+}
+
+select {
+  margin-top: 5px;
+}
