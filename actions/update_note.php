@@ -6,6 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 require_once '../models/note.php';
 require_once '../models/user.php';
+require_once '../models/mysql.php';
 
 $request = null;
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
@@ -22,15 +23,15 @@ if (!isset($request['noteid']))
     exit();
 
 $note = new Note();
-$noteid = (int)$request['noteid'];
+$noteid = (int)Database::clearText($request['noteid']);
 if ($noteid < 0)
     $note->createNewNote($user->id);
 else
     $note->getNote($noteid);
 
-$note->title = isset($request['title']) ? $request['title'] : "";
-$note->text = isset($request['text']) ? str_replace("'", "\'", $request['text']) : "";
-$note->importance = $request['importance'];
+$note->title = isset($request['title']) ? Database::clearText($request['title']) : "";
+$note->text = isset($request['text']) ? Database::clearText($request['text']) : "";
+$note->importance = Database::clearText($request['importance']);
 date_default_timezone_set("UTC");
 $note->datetime = date("Y-m-d H:i:s");
 $note->saveNote();

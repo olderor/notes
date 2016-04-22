@@ -74,7 +74,7 @@ if (!isset($user, $user->id))
             }
             newNote += '">';
             newNote += '<input type="hidden" name="noteid" value="' + id + '">';
-            newNote += '<div class="panel-heading"><input  onKeyUp="checkLengthTitle(this);" autocomplete="off" class="form-control input-lg panel-title title" type="text" name="title" placeholder="Title" value="';
+            newNote += '<div class="panel-heading"><input onKeyUp="checkLengthTitle(this);" autocomplete="off" class="form-control input-lg panel-title title" type="text" name="title" placeholder="Title" value="';
             newNote += title + '">';
             newNote += '<button type="button" class="close" aria-label="Close" id="delete" onclick="deleteNote(this);"><span aria-hidden="true">&times;</span></button>';
             newNote += '<select class="form-control" name="importance" onchange="changeImportance(this);">'
@@ -94,7 +94,20 @@ if (!isset($user, $user->id))
             newNote += '</label>';
             newNote += '</div></div></form></div>';
 
-            col.innerHTML = newNote + col.innerHTML;
+            if (id < 0)
+                col.innerHTML = newNote + col.innerHTML;
+            else
+                col.innerHTML = col.innerHTML + newNote;
+            var length = text.length;
+            if (length < 65)
+                length = 65;
+            
+            for (var i = 0; i < col.childNodes.length; i++)
+               if (col.childNodes[i].name == 'height')
+               {
+                   col.childNodes[i].value = +col.childNodes[i].value + length;
+                   break;
+               }
 
             $('textarea').each(function () {
                 autosize(this);
@@ -147,7 +160,7 @@ if (!isset($user, $user->id))
 </nav>
 
 <h1 style="text-align: center; padding-bottom: 50px;">Your notes
-    <button class="btn btn-lg btn-primary" id="submit" onclick="newNote();">New Note</button>
+    <button class="btn btn-lg btn-primary" id="submit" onclick="newNote();">+</button>
 </h1>
 <div class="container" id="container">
 
@@ -167,78 +180,15 @@ if (!isset($user, $user->id))
     echo '<input type="hidden" id="count" value="' . $notesCount . '">';
     echo '<div class="row">';
 
-    for ($column = 0; $notesIndex < $notesCount; $notesIndex++) {
+    for ($column = 0; $column < 3; $column++) {
         echo '<div class="col-sm-4" id="col-sm-4-' . ($column + 1) . '">';
         echo '<input type="hidden" name="height" value="0">';
-        for ($row = 0; $row * 3 + $column < $notesCount; $notesIndex++) {
-            $note = $notes[$row * 3 + $column];
-/*
-            echo '<form method="post" id="form' . $note->id . '" action="actions/update_note.php">';
-            echo '<div class="panel ';
-
-            switch ($note->importance) {
-                case 5:
-                    echo 'panel-primary';
-                    break;
-                case 4:
-                    echo 'panel-danger';
-                    break;
-                case 3:
-                    echo 'panel-info';
-                    break;
-                case 2:
-                    echo 'panel-success';
-                    break;
-                case 1:
-                    echo 'panel-warning';
-                    break;
-                default:
-                    echo 'panel-default';
-                    break;
-            }
-            echo '">';
-            echo '<input type="hidden" name="noteid" value="' . $note->id . '">';
-            echo '<div class="panel-heading"><input autocomplete="off" class="form-control input-lg panel-title title" type="text" name="title" placeholder="Title" value="';
-            //Panel title
-            echo $note->title;
-
-            echo '">';
-            echo '<button type="button" class="close" aria-label="Close" id="delete" onclick="deleteNote(this);"><span aria-hidden="true">&times;</span></button>';
-            echo '<select class="form-control" name="importance" onchange="changeImportance(this);">
-    <option value="5"' . ($note->importance == 5 ? "selected" : "") . '>Emergency</option>
-    <option value="4"' . ($note->importance == 4 ? "selected" : "") . '>Highly important</option>
-    <option value="3"' . ($note->importance == 3 ? "selected" : "") . '>Important</option>
-    <option value="2"' . ($note->importance == 2 ? "selected" : "") . '>Regular</option>
-    <option value="1"' . ($note->importance == 1 ? "selected" : "") . '>Non-important</option>
-    <option value="0"' . ($note->importance == 0 ? "selected" : "") . '>Irrelevant</option>
-  </select>';
-            echo '</div> <div class="panel-body"><textarea onKeyUp="checkLengthTextarea(this);" autocomplete="off" class="form-control input-lg panel-title" name="text"  style="background: none; height: auto;" type="text" placeholder="Your text">';
-            //Panel content
-            echo $note->text;
-
-            echo '</textarea>';
-            echo '<div style="padding-top: 5px;">';
-            echo '<button class="btn btn-lg btn-primary" id="submit">Save</button>';
-            echo '<label class="text-right datetime" id="date" style="width: calc(100% - 85px);text-align: right;">';
-            echo $note->datetime;
-            echo '</label>';
-            echo '</div></div></form></div>';*/
-            //id, importance, title, text, datetime
-            $row++;
-        }
-        $notesIndex--;
-        $column++;
         echo '</div>';
     }
-    $notesIndex = 0;
-    for ($column = 0; $notesIndex < $notesCount; $notesIndex++) {
-        for ($row = 0; $row * 3 + $column < $notesCount; $notesIndex++) {
-            $note = $notes[$row * 3 + $column];
-            echo '<script>showNote("' . $note->id . '", "' . $note->importance . '", "' . $note->title . '", ' . json_encode($note->text) . ', "' . $note->datetime . '");</script>';
-            $row++;
-        }
-        $notesIndex--;
-        $column++;
+
+    for ($notesIndex = 0; $notesIndex < $notesCount; $notesIndex++) {
+        $note = $notes[$notesIndex];
+        echo '<script>showNote("' . $note->id . '", "' . $note->importance . '", "' . $note->title . '", ' . json_encode($note->text) . ', "' . $note->datetime . '");</script>';
     }
     echo '</div>';
 
@@ -273,9 +223,10 @@ if (!isset($user, $user->id))
             button.form.style = "display: none;";
             $.ajax({
                 url:'actions/delete_note.php',
-                type:'post',
+                type:'get',
                 data:$('#' + button.form.id).serialize(),
                 success:function() {
+                    console.log(getCookie('temp'));
                 }
             });
         }

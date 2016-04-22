@@ -12,10 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 else if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $request = $_POST;
 
-$mail = $request["mail"];
-$password = $request["password"];
+$mail = Database::clearText($request["mail"]);
+$password = Database::clearText($request["password"]);
 
-error_log(print_r($mail . ' ' . $password, TRUE));
+//error_log(print_r($mail . ' ' . $password, TRUE));
 
 $user = new User;
 $user->getUser($mail, $password);

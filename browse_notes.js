@@ -1,11 +1,12 @@
 
 function checkLengthTextarea(textarea) {
-    if (textarea.value.length > 20000)
+    if (textarea.value.length > 1000)
     {
-        textarea.value = textarea.value.substr(0,20000);
-        alert('characters limit is 20000');
+        textarea.value = textarea.value.substr(0,1000);
+        alert('characters limit is 1000');
         autosize(textarea);
     }
+    textarea.setAttribute('value', textarea.value);
 }
 
 function checkLengthTitle(title) {
@@ -14,6 +15,7 @@ function checkLengthTitle(title) {
         title.value = title.value.substr(0,29);
         alert('characters limit is 29');
     }
+    title.setAttribute('value', title.value);
 }
 function changeImportance(select) {
     form = select.parentNode.parentNode;
@@ -56,8 +58,16 @@ function getColumnWithMinHeight() {
     var col2 = document.getElementById('col-sm-4-2');
     var col3 = document.getElementById('col-sm-4-3');
 
+    var col1H = getHeight(col1);
+    var col2H = getHeight(col2);
+    var col3H = getHeight(col3);
+
+    var min  = col3H < col2H ? col3 : col2;
+    var minH = col3H < col2H ? col3H : col2H;
+    return minH < col1H ? min : col1;
+    /*
     var min = col3.offsetHeight < col2.offsetHeight ? col3 : col2;
-    return min.offsetHeight < col1.offsetHeight ? min : col1;
+    return min.offsetHeight < col1.offsetHeight ? min : col1;*/
 }
 
 function formatDate(date) {

@@ -30,7 +30,6 @@ class Database {
             ErrorHandler::newError(3, 'Request failed: ' . mysqli_error(self::$link));
         
         self::$last_id = mysqli_insert_id(self::$link);
-        
         mysqli_close(self::$link);
     }
 
@@ -47,6 +46,14 @@ class Database {
         mysqli_free_result($result);
         mysqli_close(self::$link);
         return $array;
+    }
+
+    public static function clearText($text) {
+        self::connectToDb();
+        $text = strip_tags($text);
+        $text = htmlentities($text);
+        $text = stripslashes($text);
+        return mysqli_real_escape_string(self::$link, $text);
     }
 }
 

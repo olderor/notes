@@ -12,8 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 else if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $request = $_POST;
 
-$mail = $request["mail"];
-$password = $request["password"];
+$mail = Database::clearText($request["mail"]);
+$password = Database::clearText($request["password"]);
 
 $user = new User;
 $user->newUser($mail, $password);

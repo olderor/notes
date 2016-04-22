@@ -12,7 +12,7 @@ class NoteCollection
     public $notes;
 
     public function getUserNotes() {
-        $query = "SELECT * FROM `" . Database::$notes_table . "` WHERE (`user_id`=$this->userid AND `deleted`=0) ORDER BY `datetime` ASC";
+        $query = "SELECT * FROM `" . Database::$notes_table . "` WHERE (`user_id`=" . Database::clearText($this->userid) . " AND `deleted`=0) ORDER BY `datetime` DESC";
         $response = Database::sendQueryWithResult($query);
         $this->notes = array();
         foreach ($response as $row) {

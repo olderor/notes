@@ -17,11 +17,13 @@ if ($request == null)
 
 $user = unserialize($_SESSION['user']);
 
+setCookie('temp', $request['noteid'], time() + 3600, '/');
+
 if (!isset($request['noteid']))
     exit();
 
 $note = new Note();
-$note->getNote($request['noteid']);
+$note->getNote((int)Database::clearText($request['noteid']));
 $note->deleteNote();
 
 exit();
