@@ -112,13 +112,6 @@ if (!isset($user, $user->id))
             $('textarea').each(function () {
                 autosize(this);
             });
-/*
-            $('form').submit(function(e){
-                e.preventDefault();
-                this['submit'].innerHTML = '<div data-loader="circle"></div>';
-                this['submit'].style = 'padding: 1.5px 16px;';
-                SubForm(this);
-            });*/
 
         }</script>
 </head>
@@ -223,10 +216,9 @@ if (!isset($user, $user->id))
             button.form.style = "display: none;";
             $.ajax({
                 url:'actions/delete_note.php',
-                type:'get',
+                type:'post',
                 data:$('#' + button.form.id).serialize(),
                 success:function() {
-                    console.log(getCookie('temp'));
                 }
             });
         }
@@ -241,13 +233,7 @@ if (!isset($user, $user->id))
             form['submit'].innerHTML = '<div data-loader="circle"></div>';
             form['submit'].style = 'padding: 1.5px 16px;';
             SubForm(form);
-        }/*
-        $('form').submit(function(e){
-            e.preventDefault();
-            this['submit'].innerHTML = '<div data-loader="circle"></div>';
-            this['submit'].style = 'padding: 1.5px 16px;';
-            SubForm(this);
-        });*/
+        }
 
         $('textarea').each(function () {
             autosize(this);
@@ -258,43 +244,7 @@ if (!isset($user, $user->id))
             var count = +document.getElementById('count').value + 1;
             document.getElementById('count').value = count;
 
-            /*
-            var newNote = '<form method="post" id="form-' + count + '" action="actions/update_note.php">';
-            newNote += '<div class="panel panel-default">';
-            newNote += '<input type="hidden" name="noteid" value="-' + count + '">';
-            newNote += '<div class="panel-heading"><input autocomplete="off" class="form-control input-lg panel-title title" type="text" name="title" placeholder="Title" value="">';
-            newNote += '<button type="button" class="close" aria-label="Close" id="delete" onclick="deleteNote(this);"><span aria-hidden="true">&times;</span></button>';
-            newNote += '<select class="form-control" name="importance" onchange="changeImportance(this);">'
-            newNote += '<option value="5">Emergency</option>'
-            newNote += '<option value="4">Highly important</option>'
-            newNote += '<option value="3">Important</option>'
-            newNote += '<option value="2">Regular</option>'
-            newNote += '<option value="1">Non-important</option>'
-            newNote += '<option value="0" selected>Irrelevant</option>'
-            newNote += '</select>';
-            newNote += '</div> <div class="panel-body"><textarea onKeyUp="checkLengthTextarea(this);" autocomplete="off" class="form-control input-lg panel-title" name="text"  style="background: none; height: auto;" type="text" placeholder="Your text">';
-            newNote += '</textarea>';
-            newNote += '<div style="padding-top: 5px;">';
-            newNote += '<button class="btn btn-lg btn-primary" id="submit">Save</button>';
-            newNote += '<label class="text-right datetime" id="date" style="width: calc(100% - 85px);text-align: right;">';
-            newNote += formatDate(new Date());
-            newNote += '</label>';
-            newNote += '</div></div></form></div>';
-
-            col.innerHTML = newNote + col.innerHTML;
-*/
             showNote(-count, 0, "", "", formatDate(new Date()));
-            /*
-            $('form').submit(function(e){
-                e.preventDefault();
-                this['submit'].innerHTML = '<div data-loader="circle"></div>';
-                this['submit'].style = 'padding: 1.5px 16px;';
-                SubForm(this);
-            });*/
-
-            $('textarea').each(function () {
-                autosize(this);
-            });
         }
     </script>
 </div> <!-- /container -->

@@ -17,8 +17,6 @@ if ($request == null)
 
 $user = unserialize($_SESSION['user']);
 
-setCookie('temp', $request['noteid'], time() + 3600, '/');
-
 if (!isset($request['noteid']))
     exit();
 
