@@ -40,10 +40,10 @@
         echo "<h2 class='error'>" . $request['message'] . "</h2>";
     ?>
 
-    <form class="form-signin" method="get" action="actions/register_user.php">
+    <form class="form-signin" method="post" action="actions/register_user.php">
         <h2 class="form-signin-heading" style="text-align: center;">Registration</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" name="mail" class="form-control" placeholder="Email address"
+        <input onkeydown="checkLength(this);" type="email" id="inputEmail" name="mail" class="form-control" placeholder="Email address"
             <?php
             if (isset($request, $request['mail']))
                 echo "value='" . $request['mail'] . "'";
@@ -52,10 +52,21 @@
             ?>
                required>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+        <input onkeydown="checkLength(this);" type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
         <button class="btn btn-lg btn-primary" style="width: calc(50% - 5px);" type="submit">Register</button>
         <button class="btn btn-lg btn-default" type="button" style="margin-left: 5px; width: calc(50% - 5px);" onclick="location.href = 'signin.php';">Sign in</button>
     </form>
+
+    <script>
+        function checkLength(input) {
+            if (input.value.length > 320)
+            {
+                input.value = input.value.substr(0,320);
+                alert('characters limit is 320');
+            }
+            input.setAttribute('value', input.value);
+        }
+    </script>
 
 </div> <!-- /container -->
 </body>

@@ -13,11 +13,11 @@ $offset = 0;
 if (!isset($user, $user->id))
     ErrorHandler::newError(0, "Please, sign in before browsing notes.", "signin.php");
 
-    $noteCollection = new NoteCollection();
-    $noteCollection->userid = $user->id;
-    $noteCollection->getUserNotes();
-    $notes = $noteCollection->notes;
-    $notesCount = count($notes);
+$noteCollection = new NoteCollection();
+$noteCollection->userid = $user->id;
+$noteCollection->getUserNotes();
+$notes = $noteCollection->notes;
+$notesCount = count($notes);
 
 ?>
 <!DOCTYPE html>
@@ -33,13 +33,17 @@ if (!isset($user, $user->id))
     <title>Your Notes</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
 
 
     <!-- Custom styles for this template -->
@@ -101,13 +105,12 @@ if (!isset($user, $user->id))
             var length = text.length;
             if (length < 65)
                 length = 65;
-            
+
             for (var i = 0; i < col.childNodes.length; i++)
-               if (col.childNodes[i].name == 'height')
-               {
-                   col.childNodes[i].value = +col.childNodes[i].value + length;
-                   break;
-               }
+                if (col.childNodes[i].name == 'height') {
+                    col.childNodes[i].value = +col.childNodes[i].value + length;
+                    break;
+                }
 
             $('textarea').each(function () {
                 autosize(this);
@@ -119,7 +122,8 @@ if (!isset($user, $user->id))
 <nav class="navbar navbar-default" id="nav">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -136,7 +140,7 @@ if (!isset($user, $user->id))
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="">
                         <?php
-                            echo $user->mail;
+                        echo $user->mail;
                         ?>
                         <span class="sr-only">(current)</span></a></li>
                 <li><a href="signin.php" onclick="
@@ -191,19 +195,19 @@ if (!isset($user, $user->id))
 
     <script>
 
-        function SubForm (form){
+        function SubForm(form) {
             $.ajax({
-                url:'actions/update_note.php',
-                type:'post',
-                data:$('#' + form.id).serialize(),
-                success:function(){
+                url: 'actions/update_note.php',
+                type: 'post',
+                data: $('#' + form.id).serialize(),
+                success: function () {
                     form['submit'].innerHTML = "Save";
                     form['submit'].style = "";
                     var time = getCookie('time');
                     //console.log(time);
                     if (time != null && time != undefined)
                         form.childNodes[0].childNodes[3].childNodes[1].childNodes[1].innerHTML = time.replace('+', ' ');
-                    if(form['noteid'].value < 0) {
+                    if (form['noteid'].value < 0) {
                         var lastId = getCookie('lastId');
                         form['noteid'].value = lastId;
                         form.id = "form" + lastId;
@@ -215,10 +219,10 @@ if (!isset($user, $user->id))
         function deleteNote(button) {
             button.form.style = "display: none;";
             $.ajax({
-                url:'actions/delete_note.php',
-                type:'post',
-                data:$('#' + button.form.id).serialize(),
-                success:function() {
+                url: 'actions/delete_note.php',
+                type: 'post',
+                data: $('#' + button.form.id).serialize(),
+                success: function () {
                 }
             });
         }
