@@ -26,6 +26,8 @@ body {
 .logo {
   height: 15%;
   width: 15%;
+  max-width: 200px;
+  max-height: 200px;
 }
 
 a {

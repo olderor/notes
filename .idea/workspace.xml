@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2452136e-be9e-4308-aa5b-88f308f86df6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bootstrap/arrows.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bootstrap/calendar.css" afterPath="$PROJECT_DIR$/bootstrap/calendar.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bootstrap/index.css" afterPath="$PROJECT_DIR$/bootstrap/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/browse_notes.php" afterPath="$PROJECT_DIR$/browse_notes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calendar.php" afterPath="$PROJECT_DIR$/calendar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/mysql.php" afterPath="$PROJECT_DIR$/models/mysql.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/restore_browse_notes.php" afterPath="$PROJECT_DIR$/restore_browse_notes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/restore_calendar.php" afterPath="$PROJECT_DIR$/restore_calendar.php" />
     </list>
     <ignored path="notes.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -112,12 +103,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contacts.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="contacts.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/contacts.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="105" column="48" selection-start-line="105" selection-start-column="48" selection-end-line="105" selection-end-column="48" />
+            <state relative-caret-position="-1188">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
+                <element signature="n#style#0;n#h1#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h1#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
@@ -127,8 +119,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="29" />
+            <state relative-caret-position="-2128">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <marker date="1462398037650" expanded="true" signature="4508:4531" placeholder="..." />
                 <marker date="1462398037650" expanded="true" signature="4652:4693" placeholder="..." />
@@ -137,11 +129,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bootstrap/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="760">
-              <caret line="64" column="1" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
+            <state relative-caret-position="562">
+              <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -198,13 +190,13 @@
         <option value="$PROJECT_DIR$/models/mysql.php" />
         <option value="$PROJECT_DIR$/bootstrap/calendar.css" />
         <option value="$PROJECT_DIR$/bootstrap/signin.css" />
-        <option value="$PROJECT_DIR$/bootstrap/index.css" />
         <option value="$PROJECT_DIR$/browse_notes.php" />
         <option value="$PROJECT_DIR$/calendar.php" />
         <option value="$PROJECT_DIR$/restore_browse_notes.php" />
         <option value="$PROJECT_DIR$/restore_calendar.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/contacts.php" />
+        <option value="$PROJECT_DIR$/bootstrap/index.css" />
       </list>
     </option>
   </component>
@@ -373,15 +365,15 @@
       <workItem from="1460973876471" duration="24299000" />
       <workItem from="1461268710743" duration="16742000" />
       <workItem from="1462371399955" duration="1792000" />
-      <workItem from="1462373275993" duration="21447000" />
+      <workItem from="1462373275993" duration="21659000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111857000" />
+    <option name="totallyTimeSpent" value="112069000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="2" width="1926" height="1036" extended-state="1" />
+    <frame x="-8" y="2" width="1926" height="1036" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1797694" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -702,14 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bootstrap/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="64" column="1" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/browse_notes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
@@ -759,10 +743,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/contacts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1188">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="29" />
+        <state relative-caret-position="-2128">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <marker date="1462398037650" expanded="true" signature="4508:4531" placeholder="..." />
             <marker date="1462398037650" expanded="true" signature="4652:4693" placeholder="..." />
@@ -770,13 +765,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/contacts.php">
+    <entry file="file://$PROJECT_DIR$/bootstrap/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="105" column="48" selection-start-line="105" selection-start-column="48" selection-end-line="105" selection-end-column="48" />
-          <folding>
-            <element signature="n#style#0;n#h1#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="562">
+          <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
