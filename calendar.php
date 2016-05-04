@@ -64,7 +64,7 @@ if (!isset($user, $user->id))
             <ul class="nav navbar-nav">
                 <li><a href="index.php">Home</a></li>
                 <li class="active"><a href="browse_notes.php">Browse notes</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="contacts.php">Contact</a></li>
                 <li><a href="restore_browse_notes.php">Restore</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
