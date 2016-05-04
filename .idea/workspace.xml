@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2452136e-be9e-4308-aa5b-88f308f86df6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/actions/delete_note.php" afterPath="$PROJECT_DIR$/actions/delete_note.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bootstrap/autosize.js" afterPath="$PROJECT_DIR$/bootstrap/autosize.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bootstrap/signin.css" afterPath="$PROJECT_DIR$/bootstrap/signin.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/browse_notes.js" afterPath="$PROJECT_DIR$/browse_notes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/browse_notes.php" afterPath="$PROJECT_DIR$/browse_notes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calendar.php" afterPath="$PROJECT_DIR$/calendar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/NoteCollection.php" afterPath="$PROJECT_DIR$/models/NoteCollection.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/note.php" afterPath="$PROJECT_DIR$/models/note.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/mysql.php" afterPath="$PROJECT_DIR$/models/mysql.php" />
     </list>
     <ignored path="notes.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,16 +46,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="get_notes.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/actions/get_notes.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="32" column="60" selection-start-line="32" selection-start-column="60" selection-end-line="32" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="restore_browse_notes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/restore_browse_notes.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -88,10 +70,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="restore_calendar.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mysql.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/models/mysql.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="19" column="71" selection-start-line="19" selection-start-column="71" selection-end-line="19" selection-end-column="71" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="restore_calendar.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/restore_calendar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
+            <state relative-caret-position="1914">
               <caret line="87" column="39" selection-start-line="87" selection-start-column="39" selection-end-line="87" selection-end-column="39" />
               <folding />
             </state>
@@ -186,7 +178,6 @@
         <option value="$PROJECT_DIR$/actions/register_user.php" />
         <option value="$PROJECT_DIR$/signin.php" />
         <option value="$PROJECT_DIR$/register.php" />
-        <option value="$PROJECT_DIR$/models/mysql.php" />
         <option value="$PROJECT_DIR$/demo/index.html" />
         <option value="$PROJECT_DIR$/bootstrap/calendar.css" />
         <option value="$PROJECT_DIR$/jquery-ui-datepicker.min.js" />
@@ -205,6 +196,7 @@
         <option value="$PROJECT_DIR$/calendar.php" />
         <option value="$PROJECT_DIR$/restore_browse_notes.php" />
         <option value="$PROJECT_DIR$/restore_calendar.php" />
+        <option value="$PROJECT_DIR$/models/mysql.php" />
       </list>
     </option>
   </component>
@@ -269,7 +261,35 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="models">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="notes">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="bootstrap">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="notes">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="actions">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -345,15 +365,15 @@
       <workItem from="1460973876471" duration="24299000" />
       <workItem from="1461268710743" duration="16742000" />
       <workItem from="1462371399955" duration="1792000" />
-      <workItem from="1462373275993" duration="17427000" />
+      <workItem from="1462373275993" duration="17880000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107837000" />
+    <option name="totallyTimeSpent" value="108290000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="2" width="1926" height="1036" extended-state="1" />
+    <frame x="-8" y="2" width="1926" height="1036" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1797694" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -509,14 +529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1320">
           <caret line="60" column="4" selection-start-line="60" selection-start-column="4" selection-end-line="69" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/mysql.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
           <folding />
         </state>
       </provider>
@@ -739,8 +751,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/restore_calendar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
+        <state relative-caret-position="1914">
           <caret line="87" column="39" selection-start-line="87" selection-start-column="39" selection-end-line="87" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/mysql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="19" column="71" selection-start-line="19" selection-start-column="71" selection-end-line="19" selection-end-column="71" />
           <folding />
         </state>
       </provider>
