@@ -22,6 +22,9 @@ if (!isset($request['noteid']))
 
 $note = new Note();
 $note->getNote((int)Database::clearText($request['noteid']));
+date_default_timezone_set("UTC");
+$note->datetime = date("Y-m-d H:i:s");
+$note->saveNote();
 $note->deleteNote();
 
 exit();

@@ -38,11 +38,12 @@ if (!isset($user, $user->id))
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
             crossorigin="anonymous"></script>
 
-
     <!-- Custom styles for this template -->
     <link href="bootstrap/signin.css" rel="stylesheet">
     <link href="bootstrap/loader.css" rel="stylesheet">
     <script src="bootstrap/autosize.js"></script>
+
+    <link href="bootstrap/calendar.css" rel="stylesheet">
 </head>
 <body>
 <input type="hidden" id="offset" value="0">
@@ -62,9 +63,9 @@ if (!isset($user, $user->id))
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="index.php">Home</a></li>
-                <li class="active"><a href="browse_notes.php">Browse notes</a></li>
+                <li><a href="browse_notes.php">Browse notes</a></li>
                 <li><a href="#">Contact</a></li>
-                <li><a href="restore_browse_notes.php">Restore</a></li>
+                <li class="active"><a href="restore_browse_notes.php">Restore</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="">
@@ -85,13 +86,15 @@ if (!isset($user, $user->id))
     </div><!--/.container-fluid -->
 </nav>
 <a id="scrollup" href="#top">&uarr;</a>
-<h1 style="text-align: center; padding-bottom: 50px; line-height: 1.5;">Your notes
-    <button class="btn btn-lg btn-primary" id="submit" onclick="newNote();">+</button>
-    <br><a href="calendar.php">Search in calendar</a>
+<h1 style="text-align: center; padding-bottom: 50px; line-height: 1.5;">Your deleted notes
+<br><a href="restore_browse_notes.php">See all your deleted notes</a>
 </h1>
+
+<div id="calendar" style="margin:25px auto; width: 370px;"></div>
+
 <div class="container" id="container">
 
-    <div class="row">
+    <div class="row" id="table_notes">
         <div class="col-sm-4" id="col-sm-4-1">
             <input type="hidden" name="height" value="0">
         </div>
@@ -106,10 +109,22 @@ if (!isset($user, $user->id))
 
 
 
-    <script>var deleted = false;</script>
+    <script>var deleted = true;</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="jquery-ui-datepicker.min.js"></script>
     <script src="showing_notes.js"></script>
-    <script src="browse_notes.js"></script>
+    <script src="calendar_notes.js"></script>
+    <script>
 
+        $('#calendar').datepicker({
+            inline: true,
+            firstDay: 1,
+            showOtherMonths: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+        });
+
+
+    </script>
 </div> <!-- /container -->
 </body>
 </html>

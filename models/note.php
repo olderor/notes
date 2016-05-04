@@ -44,7 +44,7 @@ class Note
     }
 
     public function saveNote() {
-        $query = "UPDATE `" . Database::$notes_table . "` SET `title`='$this->title', `importance`='$this->importance', `text`='$this->text', `datetime`='$this->datetime' WHERE `id`=$this->id";
+        $query = "UPDATE `" . Database::$notes_table . "` SET `title`='$this->title', `importance`='$this->importance', `text`='$this->text', `datetime`='$this->datetime', `deleted`=0 WHERE `id`=$this->id";
         Database::sendQuery($query);
     }
 

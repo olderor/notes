@@ -62,9 +62,9 @@ if (!isset($user, $user->id))
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="index.php">Home</a></li>
-                <li class="active"><a href="browse_notes.php">Browse notes</a></li>
+                <li><a href="browse_notes.php">Browse notes</a></li>
                 <li><a href="#">Contact</a></li>
-                <li><a href="restore_browse_notes.php">Restore</a></li>
+                <li class="active"><a href="restore_browse_notes.php">Restore</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="">
@@ -85,9 +85,8 @@ if (!isset($user, $user->id))
     </div><!--/.container-fluid -->
 </nav>
 <a id="scrollup" href="#top">&uarr;</a>
-<h1 style="text-align: center; padding-bottom: 50px; line-height: 1.5;">Your notes
-    <button class="btn btn-lg btn-primary" id="submit" onclick="newNote();">+</button>
-    <br><a href="calendar.php">Search in calendar</a>
+<h1 style="text-align: center; padding-bottom: 50px; line-height: 1.5;">Your deleted notes
+    <br><a href="restore_calendar.php">Search in calendar</a>
 </h1>
 <div class="container" id="container">
 
@@ -104,9 +103,7 @@ if (!isset($user, $user->id))
     </div>
 
 
-
-
-    <script>var deleted = false;</script>
+    <script>var deleted = true;</script>
     <script src="showing_notes.js"></script>
     <script src="browse_notes.js"></script>
 

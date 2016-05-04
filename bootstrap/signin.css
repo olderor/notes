@@ -88,3 +88,37 @@ nav * {
 select {
   margin-top: 5px;
 }
+
+.restore {
+  color: darkgreen;
+  opacity: .4;
+}
+
+.restore:focus, .restore:hover {
+  color: darkgreen;
+  opacity: .9;
+}
+
+#scrollup {
+  background-color: #4E3928;
+  top: 0.5em;
+  color: white;
+  display: none;
+  padding: 0.5em;
+  position: fixed;
+  left: 0.5em;
+  text-decoration: none;
+  font-size: 30px;
+  z-index: 20;
+  border-radius: 0.5em;
+
+  background-image: linear-gradient(to bottom,#00BFFF,#1E90FF 100%);
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.scrollup :hover {
+  opacity:1;
+  transition:1s;
+}
