@@ -23,7 +23,7 @@ if (!isset($user, $user->id))
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Your Notes</title>
+    <title>Restoring</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -64,7 +64,7 @@ if (!isset($user, $user->id))
             <ul class="nav navbar-nav">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="browse_notes.php">Browse notes</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="contacts.php">Contact</a></li>
                 <li class="active"><a href="restore_browse_notes.php">Restore</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

@@ -9,7 +9,7 @@ require_once 'note.php';
 
 class Database {
 
-    public static $db_name = 'u351977120_notes'; //'notes'
+    public static $db_name = 'notes'; //notes u351977120_notes
     public static $users_table = 'users';
     public static $notes_table = 'notes';
     private static $link;
@@ -17,8 +17,8 @@ class Database {
     public static $last_id;
     
     public static function connectToDb() {
-        //if (!(self::$link = mysqli_connect('localhost', 'root', "")))
-        if (!(self::$link = mysqli_connect('localhost', 'u351977120_admin', "65366536")))
+        if (!(self::$link = mysqli_connect('localhost', 'root', "")))
+        //if (!(self::$link = mysqli_connect('localhost', 'u351977120_admin', "65366536")))
             ErrorHandler::newError(1, 'Connection failed: ' . mysqli_connect_error());
 
         if (mysqli_select_db(self::$link, self::$db_name) == 0)
