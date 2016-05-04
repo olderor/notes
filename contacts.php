@@ -66,7 +66,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="browse_notes.php">Browse notes</a></li>
-                <li class="active"><a href="contacts.php">Contact</a></li>
+                <li class="active"><a href="contacts.php">Contacts</a></li>
                 <li><a href="restore_browse_notes.php">Restore</a></li>
             </ul>
         </div><!--/.nav-collapse -->
