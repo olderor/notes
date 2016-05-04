@@ -1,16 +1,3 @@
-<?php
-
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-require 'models/user.php';
-
-$user = unserialize($_SESSION['user']);
-$mail = "";
-if (isset($user, $user->mail))
-    $mail = $user->mail;
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,21 +68,6 @@ if (isset($user, $user->mail))
                 <li><a href="browse_notes.php">Browse notes</a></li>
                 <li class="active"><a href="contacts.php">Contact</a></li>
                 <li><a href="restore_browse_notes.php">Restore</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="">
-                        <?php
-                        echo $mail;
-                        ?>
-                        <span class="sr-only">(current)</span></a></li>
-                <li><a href="signin.php" onclick="
-                $.ajax({
-                    url: 'actions/logout.php',
-                    cache: false,
-                    success: function(html){
-                    }
-                    });
-                    ">Log out</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
